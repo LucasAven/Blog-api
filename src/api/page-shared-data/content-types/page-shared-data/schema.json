@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "pages_shared_data",
+  "info": {
+    "singularName": "page-shared-data",
+    "pluralName": "pages-shared-data",
+    "displayName": "Page Shared Data"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nav_logo_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "footer_logo_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "social_media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "social-media.social-media"
+    }
+  }
+}
