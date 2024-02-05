@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_seo_seos",
+  "info": {
+    "displayName": "SEO",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "page_title": {
+      "type": "string"
+    },
+    "page_description": {
+      "type": "text",
+      "required": false
+    },
+    "keywords": {
+      "type": "text",
+      "required": false
+    },
+    "og_title": {
+      "type": "string",
+      "required": true
+    },
+    "og_description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

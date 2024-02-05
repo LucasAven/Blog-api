@@ -683,9 +683,15 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     singularName: 'author';
     pluralName: 'authors';
     displayName: 'Author';
+    description: '';
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'slug';
+    };
   };
   attributes: {
     name: Attribute.String;
@@ -698,6 +704,7 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
       'oneToMany',
       'api::blog.blog'
     >;
+    seo: Attribute.Component<'seo.seo'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -722,12 +729,18 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     singularName: 'blog';
     pluralName: 'blogs';
     displayName: 'Blog';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'title';
+    };
+  };
   attributes: {
-    title: Attribute.Text & Attribute.Required;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     content: Attribute.RichText & Attribute.Required;
     slug: Attribute.UID<'api::blog.blog', 'title'>;
     main_image: Attribute.Media & Attribute.Required;
@@ -747,6 +760,12 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     preview_text: Attribute.Text;
     readingTime: Attribute.String;
     tags: Attribute.Relation<'api::blog.blog', 'manyToMany', 'api::tag.tag'>;
+    related_blogs: Attribute.Relation<
+      'api::blog.blog',
+      'oneToMany',
+      'api::blog.blog'
+    >;
+    seo: Attribute.Component<'seo.seo'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -795,9 +814,15 @@ export interface ApiTagTag extends Schema.CollectionType {
     singularName: 'tag';
     pluralName: 'tags';
     displayName: 'Tag';
+    description: '';
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'name';
+    };
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
